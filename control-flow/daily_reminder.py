@@ -1,4 +1,3 @@
-# daily_reminder.py
 # Personal Daily Reminder Program
 
 # Prompt user for task details
@@ -8,15 +7,20 @@ time_bound = input("Is it time-bound? (yes/no): ").lower()
 
 # Process priority using match case
 match priority:
-    case "high" | "medium" | "low":
-        # Check time-bound status within the priority case
-        if time_bound == "yes":
-            # Reminder for time-sensitive tasks
-            print(f"Reminder: '{task}' is a {priority} priority task that requires immediate attention today!")
-        elif time_bound == "no":
-            # Reminder for non-time-bound tasks
-            print(f"Note: '{task}' is a {priority} priority task. Consider completing it when you have free time.")
-        else:
-            print("Invalid input for time-bound. Please enter yes or no.")
+    case "high":
+        message = f"'{task}' is a high priority task"
+    case "medium":
+        message = f"'{task}' is a medium priority task"
+    case "low":
+        message = f"'{task}' is a low priority task"
     case _:
-        print(f"'{task}' has an unknown priority level. Please enter high, medium, or low.")
+        message = f"'{task}' has an unknown priority level"
+
+# Check if task is time-bound
+if time_bound == "yes":
+    message += " that requires immediate attention today!"
+else:
+    message += ". Consider completing it when you have free time."
+
+# Display final reminder
+print("\nReminder:", message)
