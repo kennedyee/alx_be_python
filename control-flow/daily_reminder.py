@@ -1,25 +1,25 @@
-# Personal Daily Reminder Program
+# Daily Reminder Program
 
-# Prompt user for task details
+# Asking for user inputs
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Handle priority levels using match case
+# Match case for priority description
 match priority:
     case "high":
-        base_message = f"'{task}' is a high priority task"
+        priority_text = "a high priority task"
     case "medium":
-        base_message = f"'{task}' is a medium priority task"
+        priority_text = "a medium priority task"
     case "low":
-        base_message = f"'{task}' is a low priority task"
+        priority_text = "a low priority task"
     case _:
-        base_message = f"'{task}' has an unknown priority level"
+        priority_text = "a task with unknown priority"
 
-# Time sensitivity check
+# Time-bound condition
 if time_bound == "yes":
-    # Immediate action required
-    print(f"\nReminder: {base_message} that requires immediate attention today!")
+    # This is the required EXACT PHRASE from the task
+    print(f"\nReminder: '{task}' is {priority_text} that requires immediate attention today!")
 else:
-    # No immediate action required
-    print(f"\nNote: {base_message}. Consider completing it when you have free time.")
+    # For non-time-bound tasks
+    print(f"\nNote: '{task}' is {priority_text}. Consider completing it when you have free time.")
